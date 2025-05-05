@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<conio.h>
+#define MAX 20
+#define INF 999
+// complete the missing code..
+int cost[MAX][MAX],n,e,i,j,s,d,w;
+
+
+void prims() {
+	int selected[MAX] = {0}, no_of_edges = 0;
+	int x,y,min,total_cost = 0;
+
+	selected[1] = 1;
+
+	while(no_of_edges < n-1){
+		min = INF;
+		for (i=1; i<=n; i++){
+			if (selected[i]){
+				for (j=1; j<=n; j++){
+					if (!selected[j] && cost[i][j]<min){
+						min = cost[i][j];
+						x=i;
+						y=j;
+					}
+				}
+			}
+		}
+	printf("Edge cost from %d to %d : %d\n", x, y, cost[x][y]);
+	total_cost += cost[x][y];
+	selected[y]=1;
+	no_of_edges++;
+	}
+	printf("Minimum cost of spanning tree = %d\n", total_cost);
+
+}
+
+}
